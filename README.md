@@ -5,12 +5,13 @@
 A Task Management Web Application for your daily usage. 
 
 ## Features
-- Add your tasks three preset lists - Today, Upcoming and Someday
+- Add your tasks to three preset lists - Today, Upcoming and Someday
 - Create your own task list 
 - Add priority to your tasks - High, Medium and Low
 - Sort your tasks in a list based on - Time added, Deadline, Priority
 - Change task list view - list, card 
 - Responsive Design - Desktop view, Tablet view, Mobile view 
+- Dark Theme (this really is a feature these days 🙂)
 
 ## Installation
 
