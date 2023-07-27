@@ -8,7 +8,7 @@ Stay on top of deadlines, set priorities and categorize tasks into customizable 
 
 Experience seamless synchronization across devices, ensuring your tasks are accessible wherever you go. Say goodbye to scattered sticky notes and disjointed email chains—Task Master puts you in control of your tasks like a true master.
 
-Get started with Task Master today and witness the transformation in your task management process. Maximize your productivity and conquer your to-do list with ease!
+Get started with Task Master today and witness the transformation in your task management process. Maximize your productivity and conquer your Tasks with ease!
 
 ## Features
 - [ ] Add your tasks to three preset lists - Today, Upcoming and Someday
