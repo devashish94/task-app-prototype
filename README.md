@@ -11,14 +11,14 @@ Experience seamless synchronization across devices, ensuring your tasks are acce
 Get started with Task Master today and witness the transformation in your task management process. Maximize your productivity and conquer your to-do list with ease!
 
 ## Features
-- Add your tasks to three preset lists - Today, Upcoming and Someday
-- Create your own task list 
-- Add priority to your tasks - High, Medium and Low
-- Sort your tasks in a list based on - Time added, Deadline, Priority
-- Change task list view - list, card 
-- Responsive Design - Desktop view, Tablet view, Mobile view 
-- Multiple Themes (with a dark mode 🙂) 
-- Google Sign for a seamless and convenient way to sign up and log in
+- [ ] Add your tasks to three preset lists - Today, Upcoming and Someday
+- [ ] Create your own task list 
+- [ ] Add priority to your tasks - High, Medium and Low
+- [ ] Sort your tasks in a list based on - Time added, Deadline, Priority
+- [ ] Change task list view - list, card 
+- [X] Responsive Design - Desktop view, Tablet view, Mobile view 
+- [ ] Multiple Themes (with a dark mode 🙂) 
+- [ ] Google Sign for a seamless and convenient way to sign up and log in
 
 ## Installation
 
