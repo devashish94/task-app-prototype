@@ -7,21 +7,21 @@ export default function ({title}: any) {
   const dispatch = useAppDispatch()
   return (
     <div className='h-full w-full flex-grow flex z-10'>
+
       {/* main content = desktop view */}
-      <div className={`w-full flex-grow hidden large:flex rounded-r-2xl transition-all ease-in-out duration-[200ms]`}>
+      <div className={`w-full flex-grow hidden large:flex rounded-r-2xl`}>
         <MainContent title={title} view={'Desktop View'} />
       </div>
 
       {/* main content = tablet view */}
       <div
-        className={`w-full flex-grow hidden split-display:flex large:hidden duration-[300ms] ease-in-out transition-all`} >
+        className={`will-change-transform w-full flex-grow hidden split-display:flex large:hidden duration-[350ms] ease-in-out transition-all transform-gpu`} >
         <MainContent title={title} view={'Tablet View'} />
       </div>
 
       {/* main content = mobile view */}
       <div
-        // className={`w-full flex-grow split-display:hidden duration-[300ms] ease-in-out transition-all z-10 ${sidebar ? 'opacity-90' : 'opacity-100'}`}
-        className={`w-full flex-grow split-display:hidden duration-[300ms] ease-in-out transition-all z-10`}
+        className={`w-full will-change-auto flex-grow split-display:hidden duration-[350ms] ease-in-out transition-all transform-gpu z-10 ${sidebar ? 'opacity-60' : 'opacity-100'}`}
         onClick={() => { if (sidebar) { dispatch(toggle()) } }} >
         <MainContent title={title} view={'Mobile View'} />
       </div>

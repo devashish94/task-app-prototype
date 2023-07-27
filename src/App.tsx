@@ -6,7 +6,8 @@ import { Route, Routes } from 'react-router-dom'
 function App() {
   return (
     <>
-      <div className="w-screen h-screen flex justify-center font-ubuntu bg-cover bg-center bg-slate-300 shadow-xl">
+      {/* <div className="w-screen h-screen flex justify-center font-ubuntu bg-cover bg-center bg-slate-300 shadow-xl"> */}
+      <div className="w-screen h-screen flex justify-center bg-cover bg-center bg-slate-300 shadow-xl">
         <div className='text-black flex w-full justify-stretch mx-0 2xl:mx-16 my-0 2xl:my-5 desktop:mx-60 2xl:rounded-xl shadow-xl'>
           <SidebarView />
           <div className={`h-full w-full flex flex-col z-0`} >
