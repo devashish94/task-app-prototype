@@ -6,7 +6,7 @@ export default function ({title}: any) {
   const sidebar = useAppSelector(state => state.toggleNav)
   const dispatch = useAppDispatch()
   return (
-    <div className='h-full w-full flex-grow flex z-10'>
+    <div className='h-full w-full flex-grow flex z-10 rounded-2xl'>
 
       {/* main content = desktop view */}
       <div className={`w-full flex-grow hidden large:flex rounded-r-2xl`}>
@@ -21,7 +21,8 @@ export default function ({title}: any) {
 
       {/* main content = mobile view */}
       <div
-        className={`w-full will-change-auto flex-grow split-display:hidden duration-[350ms] ease-in-out transition-all transform-gpu z-10 ${sidebar ? 'opacity-60' : 'opacity-100'}`}
+        className={`w-full will-change-auto flex-grow split-display:hidden duration-[350ms] ease-in-out transition-all transform-gpu z-10 ${sidebar ? 'opacity-50 blur-sm' : ''}`}
+        // className={`w-full will-change-auto flex-grow split-display:hidden duration-[350ms] ease-in-out transition-all transform-gpu z-10`}
         onClick={() => { if (sidebar) { dispatch(toggle()) } }} >
         <MainContent title={title} view={'Mobile View'} />
       </div>
