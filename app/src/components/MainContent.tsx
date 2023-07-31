@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
-import { fetchTasks } from '../store/slices/taskSlice'
+import { fetchTaskList, fetchTasks, nullTheArray } from '../store/slices/taskSlice'
 import { toggle } from "../store/slices/navbarToggleSlice";
 import CollapseLogo from "../svg-components/CollapseLogo";
 import ThreeDots from "../svg-components/ThreeDots";
 import EditLogo from "../svg-components/EditLogo";
 import Bin from "../svg-components/Bin";
 import PlusLogo from "../svg-components/PlusLogo";
+import { useLocation } from "react-router-dom";
+import Relax from "../svg-components/Relax";
 
 function Loader() {
   return (
@@ -19,13 +21,24 @@ function Loader() {
   )
 }
 
+// type Typer = {
+//   task_list: string,
+//   title: string,
+//   description: string,
+//   completed: boolean
+// }
+
 export default function MainContent(props: any) {
   const { tasks, loading } = useAppSelector(state => state.tasks)
   const dispatch = useAppDispatch()
+  const location = useLocation()
 
+  console.log(useLocation().pathname, tasks)
   useEffect(() => {
-    dispatch(fetchTasks())
-  }, [])
+    console.clear()
+    dispatch(nullTheArray())
+    location.pathname.length === 1 ? dispatch(fetchTaskList('today')) : dispatch(fetchTaskList(location.pathname.slice(1)))
+  }, [location])
 
   const sidebar = useAppSelector(state => state.toggleNav)
 
@@ -42,9 +55,11 @@ export default function MainContent(props: any) {
         </div>
 
         <div className={`px-4 pt-5 mb-12  w-full h-full flex flex-col overflow-auto scrollbar snap-proximity scroll-smooth snap-center `}>
-          <div className={`h-full flex flex-col overflow-auto ${loading ? 'items-center justify-center' : ''}`}>
+          {/* <div className={`h-full flex flex-col overflow-auto ${loading ? 'items-center justify-center' : ''}`}> */}
+          <div className={`h-full flex flex-col overflow-auto items-center `}>
             {
-              loading ? <Loader /> : tasks.map((task, idx) => {
+              loading ? <Loader /> : tasks && tasks.length > 0 ? tasks.map((task: any, idx: number) => {
+                // console.log(tasks)
                 return (
                   <div key={idx} className="text-black w-full split-display:px-10 cursor-pointer">
                     <div className="px-2 py-4 split-display:px-4 flex justify-between hover:bg-slate-100 rounded-xl ">
@@ -64,7 +79,12 @@ export default function MainContent(props: any) {
 
                   </div>
                 );
-              })
+              }) :
+                <div className="flex flex-col text-center w-full h-full items-center overflow-hidden">
+                  <Relax />
+                  <p className="text-lg text-slate-600">Enjoy your free time, no tasks left!</p>
+                  
+                </div>
             }
           </div>
         </div>

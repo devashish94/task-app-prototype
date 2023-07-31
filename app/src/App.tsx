@@ -13,10 +13,10 @@ function App() {
           <div className={`bg-slate-100 h-full w-full flex flex-col z-0 2xl:rounded-r-2xl`} >
             <NavbarView />
             <Routes>
-              <Route path='/' element={<MainContentView title={'Today'} />} />
-              <Route path='/today' element={<MainContentView title={'Today'} />} />
-              <Route path='/upcoming' element={<MainContentView title={'Upcoming'} />} />
-              <Route path='/someday' element={<MainContentView title={'Someday'} />} />
+              <Route path='/' element={<MainContentView list={'today'} title={'Today'} />} />
+              <Route path='/today' element={<MainContentView list={'today'} title={'Today'} />} />
+              <Route path='/upcoming' element={<MainContentView list={'upcoming'} title={'Upcoming'} />} />
+              <Route path='/someday' element={<MainContentView list={'someday'} title={'Someday'} />} />
             </Routes>
           </div>
         </div>
