@@ -10,12 +10,14 @@ module.exports = {
     const list = req.params.list
     const sql = 'select * from todo where task_list = ?'
 
-    // const result = await db.query(sql, [list])
+    const result = await db.query(sql, [list])
+    res.json(result[0])
+
     // let result
-    setTimeout(async () => {
-      const result = await db.query(sql, [list])
-      res.json(result[0])
-    }, 700);
+    // setTimeout(async () => {
+    //   const result = await db.query(sql, [list])
+    //   res.json(result[0])
+    // }, 500);
 
   }
 }
