@@ -4,7 +4,7 @@ import {
 } from '../store/hooks'
 
 export default function SidebarView() {
-  const sidebar = useAppSelector(state => state.toggleNav)
+  const sidebar = useAppSelector(state => state.toggleSidebar)
   return (
     <>
       {/* desktop sidebar */}

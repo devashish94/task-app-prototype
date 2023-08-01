@@ -38,14 +38,14 @@ export const fetchTaskList = createAsyncThunk('fetchTasksList', async function (
   // const url = `http://localhost:8000/api/list/${list}`
   
   const url = `http://${window.location.host.replace(':5173', '')}:8000/api/list/${list}`
-  console.log(url)
+  // console.log(url)
 
   // const response = await fetch(url)
   // const tasks = await response.json()
    
   const tasks = await axios(url) 
 
-  console.log(url, tasks)
+  // console.log(url, tasks)
   return tasks.data
 })
 

@@ -1,14 +1,14 @@
 import {createSlice} from '@reduxjs/toolkit'
 
-export const navbarToggleSlice = createSlice({
-    name: 'toggleNav',
+export const sidebarToggleSlice = createSlice({
+    name: 'toggleSidebar',
     initialState: false,
     reducers: {
-        toggle: (state) => {
+        toggleSidebar: (state) => {
             return !state
         }
     }
 })
 
-export const {toggle} = navbarToggleSlice.actions
-export default navbarToggleSlice.reducer
+export const {toggleSidebar} = sidebarToggleSlice.actions
+export default sidebarToggleSlice.reducer

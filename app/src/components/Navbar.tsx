@@ -3,7 +3,7 @@ import {
   // useAppSelector, 
   useAppDispatch 
 } from '../store/hooks'
-import { toggle } from '../store/slices/navbarToggleSlice'
+import { toggleSidebar } from '../store/slices/navbarToggleSlice'
 
 function Navbar() {
   const dispatch = useAppDispatch()
@@ -14,7 +14,7 @@ function Navbar() {
 
         <div className='flex h-14 space-x-4'>
           <div className={`items-center flex `}>
-            <button onClick={() => dispatch(toggle())}>
+            <button onClick={() => dispatch(toggleSidebar())}>
               <SidebarToggleLogo />
             </button>
           </div>

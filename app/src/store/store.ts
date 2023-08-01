@@ -1,13 +1,17 @@
-import {configureStore} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import pinCollapseSlice from './slices/pinnedCollapseSlice'
-import navbarToggleSlice from './slices/navbarToggleSlice';
-import tasksFromList from './slices/taskSlice';
+import sidebarToggleSlice from './slices/navbarToggleSlice';
+import tasksFromListSlice from './slices/taskSlice';
+import addBottomMenuSlice from './slices/addNewTaskSlice';
+import  toggleFullscreen  from './slices/bottomMenuFullScreen';
 
 export const store = configureStore({
     reducer: {
+        tasks: tasksFromListSlice,
         pinnedCollapse: pinCollapseSlice,
-        toggleNav: navbarToggleSlice,
-        tasks: tasksFromList,
+        toggleSidebar: sidebarToggleSlice,
+        toggleAddMenu: addBottomMenuSlice,
+        toggleBottomFullscreen: toggleFullscreen
     }
 })
 
