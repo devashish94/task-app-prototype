@@ -6,7 +6,7 @@ import CloseSidebarButton from './CloseSidebarButton'
 function Sidebar() {
   return (
     <>
-      <div className="bg-slate-100 h-full w-full max-w-full large:w-80 py-4 px-4 large:rounded-none rounded-r-3xl  2xl:rounded-l-2xl">
+      <div className="bg-slate-100 h-full w-full max-w-full large:w-80 py-4 px-4  rounded-r-3xl large:rounded-none 2xl:rounded-l-2xl">
         <div className='flex flex-col justify-between w-full h-full'>
           <div className="split-display:hidden self-end">
             <CloseSidebarButton />

@@ -34,7 +34,7 @@ export default function MainContent(props: any) {
           ''
         }
        `}>
-        <div className={`w-full flex self-start justify-center-center p-4 transition-all duration-300 transform-gpu ease-in-out ${bottomMenu ? 'opacity-30 brightness-50' : ''}`}>
+        <div className={`w-full flex self-start justify-center-center p-4 transition-all duration-300 transform-gpu ease-in-out ${bottomMenu ? 'opacity-50' : ''}`}>
           <button className="inline-block large:hidden" onClick={
             () => {
               dispatch(toggleSidebar())
@@ -47,7 +47,7 @@ export default function MainContent(props: any) {
           </div>
         </div>
 
-        <div className={`px-4 pt-5 mb-12  w-full h-full flex flex-col overflow-auto snap-proximity scroll-smooth snap-center duration-300 transform-gpu ease-in-out ${bottomMenu ? 'opacity-30 brightness-50' : ''}`}
+        <div className={`px-4 pt-5 mb-12  w-full h-full flex flex-col overflow-auto snap-proximity scroll-smooth snap-center duration-300 transform-gpu ease-in-out ${bottomMenu ? 'opacity-50' : ''}`}
           onClick={
             () => {
               if (bottomMenu) {

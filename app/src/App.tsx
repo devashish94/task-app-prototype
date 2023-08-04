@@ -9,6 +9,7 @@ function App() {
       {/* <div className="w-screen h-screen flex justify-center font-ubuntu bg-cover bg-center bg-slate-300 shadow-xl"> */}
       <div className="w-screen h-screen flex justify-center items-stretch bg-cover bg-center bg-slate-300 shadow-xl relative overflow-hidden">
         <div className='text-black flex flex-col items-center mx-0 2xl:mx-16 my-0 2xl:my-5 desktop:mx-60 2xl:rounded-2xl shadow-xl w-full overflow-hidden'>
+          <BottomMenuView />
           <div className='flex w-full h-full '>
             <SidebarView />
             <div className={`bg-slate-100 h-full w-full flex flex-col z-0 2xl:rounded-r-2xl`} >
@@ -20,7 +21,6 @@ function App() {
               </Routes>
             </div>
           </div>
-          <BottomMenuView />
         </div>
       </div>
     </>

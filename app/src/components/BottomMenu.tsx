@@ -13,7 +13,7 @@ export default function BottomMenu() {
     <div className="h-full w-full bg-white rounded-br-2xl flex flex-col py-2 px-6 rounded-2xl divide-y">
 
       <div className="justify-between items-center flex py-3">
-        <div className="w-fit h-fit hover:bg-gray-100 rounded-lg p-1 cursor-pointer"
+        <div className="w-fit h-fit hover:bg-slate-100 rounded-lg p-1 cursor-pointer"
           onClick={
             () => {
               dispatch(toggleFullscreen())

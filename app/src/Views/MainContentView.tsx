@@ -2,7 +2,6 @@ import MainContent from "../components/MainContent"
 import { useAppSelector, useAppDispatch } from '../store/hooks'
 import { toggleBottomMenu } from "../store/slices/addNewTaskSlice"
 import { toggleSidebar } from '../store/slices/navbarToggleSlice'
-import BottomMenuView from "./BottomMenuView"
 
 export default function ({ title }: any) {
   const dispatch = useAppDispatch()
@@ -20,7 +19,6 @@ export default function ({ title }: any) {
           }
         }} >
         <MainContent title={title} view={'Desktop View'} />
-        {/* <BottomMenuView /> */}
       </div>
 
       {/* main content = tablet view */}
@@ -32,7 +30,6 @@ export default function ({ title }: any) {
           }
         }} >
         <MainContent title={title} view={'Tablet View'} />
-        {/* <BottomMenuView /> */}
       </div>
 
       {/* main content = mobile view */}
@@ -47,7 +44,6 @@ export default function ({ title }: any) {
           }
         }} >
         <MainContent title={title} view={'Mobile View'} />
-        {/* <BottomMenuView /> */}
       </div>
 
     </div>
