@@ -2,6 +2,7 @@ import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { toggleBottomMenu, toggleFullScreen as toggleFullscreen } from "../store/slices/addNewTaskSlice";
 import ExpandLogo from "../svg-components/ExpandLogo";
 import CloseLogo from '../svg-components/CloseLogo'
+import NonExapandLogo from "../svg-components/NonExpandLogo";
 
 export default function BottomMenu() {
   const dispatch = useAppDispatch()
@@ -10,7 +11,7 @@ export default function BottomMenu() {
   const fullscreen = useAppSelector(state => state.bottomMenu.fullscreen)
 
   return (
-    <div className="h-full w-full bg-white flex flex-col py-2 px-6 rounded-2xl divide-y">
+    <div className="h-full w-full bg-white flex flex-col px-6 border border-slate-300 rounded-2xl divide-y">
 
       <div className="justify-between items-center flex py-3 rounded-2xl">
 
@@ -19,8 +20,8 @@ export default function BottomMenu() {
             () => {
               dispatch(toggleFullscreen())
             }}>
-          <button className="w-full h-full flex items-center p-1">
-            <ExpandLogo />
+          <button className={`w-full h-full flex items-center p-1`}>
+            {fullscreen ? <NonExapandLogo /> : <ExpandLogo />}
           </button>
         </div>
 
@@ -31,7 +32,7 @@ export default function BottomMenu() {
         </div>
       </div>
 
-      <div className="h-5/6 w-full py-8 rounded-2xl border-4 flex-grow"></div>
+      <div className="h-5/6 w-full py-8 flex-grow"></div>
 
     </div>
   )

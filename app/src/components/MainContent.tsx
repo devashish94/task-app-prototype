@@ -30,22 +30,18 @@ export default function MainContent(props: any) {
     <>
       <div className={`h-full w-full flex-grow flex flex-col justify-between items-center relative overflow-hidden duration-300 transition-all transform-gpu bg-white 
         ${sidebar ?
-          'pointer-events-none split-display:pointer-events-auto rounded-l-3xl ' :
+          'rounded-l-3xl ' :
           ''
         }
-        ${bottomMenu ? 
-        'pointer-events-none' :
-        ''
-        }
        `}
-       onClick={
-        () => {
-          if (bottomMenu) {
-            dispatch(toggleBottomMenu())
+        onClick={
+          () => {
+            if (bottomMenu) {
+              dispatch(toggleBottomMenu())
+            }
           }
         }
-       }
-       >
+      >
         <div className={`w-full flex self-start justify-center-center p-4 transition-all duration-300 transform-gpu ease-in-out ${bottomMenu ? 'opacity-40' : ''}`}>
           <button className="inline-block large:hidden" onClick={
             () => {
@@ -64,9 +60,9 @@ export default function MainContent(props: any) {
         <div className={`px-4 pt-5 mb-12  w-full h-full flex flex-col overflow-auto snap-proximity scroll-smooth snap-center duration-300 transform-gpu ease-in-out ${bottomMenu ? 'opacity-40' : ''}`}
           onClick={
             () => {
-              if (bottomMenu) {
-                dispatch(toggleBottomMenu())
-              }
+              // if (bottomMenu) {
+              //   dispatch(toggleBottomMenu())
+              // }
             }
           }>
           <div className={`h-full flex flex-col overflow-auto ${loading ? 'items-center justify-center' : ''}`}>
