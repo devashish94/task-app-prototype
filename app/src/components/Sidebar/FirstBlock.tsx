@@ -8,7 +8,7 @@ import { toggleBottomMenu } from '../../store/slices/addNewTaskSlice';
 
 function FirstBlock() {
     const dispatch = useAppDispatch()
-    const bottomMenu = useAppSelector(state => state.toggleAddMenu)
+    const bottomMenu = useAppSelector(state => state.bottomMenu.toggle)
 
     const presetTaskList = ['Today', 'Upcoming', 'Someday']
     const logoList = [ <TodayLogo />, <UpcomingLogo />, <SomedayLogo />]

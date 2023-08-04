@@ -17,7 +17,7 @@ const initialState = {
   error: false
 }
 
-export const fetchTasks = createAsyncThunk('fetchTasks', async function () {
+export const fetchAllList = createAsyncThunk('fetchAllList', async function () {
 
   const url = `http://${'localhost'}:8000/api/list/today/`
   // console.log(url)
@@ -30,20 +30,20 @@ export const fetchTasks = createAsyncThunk('fetchTasks', async function () {
   // return tasks.posts
 
   const tasks = await axios(url)
+  // const response = await fetch(url)
+  // const tasks = await response.json()
 
+  console.log(url, tasks)
   return tasks.data
 })
 
 export const fetchTaskList = createAsyncThunk('fetchTasksList', async function (list: string) {
-  // const url = `http://localhost:8000/api/list/${list}`
-  
   const url = `http://${window.location.host.replace(':5173', '')}:8000/api/list/${list}`
   // console.log(url)
 
+  const tasks = await axios(url) 
   // const response = await fetch(url)
   // const tasks = await response.json()
-   
-  const tasks = await axios(url) 
 
   // console.log(url, tasks)
   return tasks.data
@@ -58,15 +58,15 @@ export const taskSlice = createSlice({
     }
   },
   extraReducers: builder => {
-    // Today Tasks
-    builder.addCase(fetchTasks.pending, (state, action) => {
+    // All Lists
+    builder.addCase(fetchAllList.pending, (state, action) => {
       state.loading = true
     })
-    builder.addCase(fetchTasks.fulfilled, (state, action) => {
+    builder.addCase(fetchAllList.fulfilled, (state, action) => {
       state.loading = false
       state.tasks = action.payload
     })
-    builder.addCase(fetchTasks.rejected, (state, action) => {
+    builder.addCase(fetchAllList.rejected, (state, action) => {
       state.loading = false
       state.error = true
     })
