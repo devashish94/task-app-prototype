@@ -117,6 +117,12 @@ function insert_task_lists() {
   }
 }
 
+function insert_tasks() {
+  for (const task of tasks) {
+    fill_tasks(task)
+  }
+}
+
 function fill_tasks(task) {
   const sql = 'insert into ?? (list_id, title, description, completed) values (?, ?, ?, ?)'
 
@@ -124,12 +130,6 @@ function fill_tasks(task) {
     const result = db.query(sql, [task_table, task.list_id, task.title, task.description, task.completed])
   } catch (err) {
     console.log('fill_tasks', err)
-  }
-}
-
-function insert_tasks() {
-  for (const task of tasks) {
-    fill_tasks(task)
   }
 }
 
