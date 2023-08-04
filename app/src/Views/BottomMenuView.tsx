@@ -6,7 +6,7 @@ export default function BottomMenuView() {
   const fullscreen = useAppSelector(state => state.bottomMenu.fullscreen)
 
   return (
-    <div className={`z-50 large:z-50 fixed border-2  w-full duration-300 transition-all rounded-2xl transform-gpu ease-in-out
+    <div className={`z-50 large:z-50 fixed border-slate-300 w-full duration-300 bg-green-500 transition-all rounded-2xl transform-gpu ease-in-out
       ${bottomMenu ?
         'bottom-0 shadow-xl split-display:drop-shadow-xl' :
         '-bottom-full'

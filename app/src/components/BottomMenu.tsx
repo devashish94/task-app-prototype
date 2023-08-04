@@ -10,9 +10,10 @@ export default function BottomMenu() {
   const fullscreen = useAppSelector(state => state.bottomMenu.fullscreen)
 
   return (
-    <div className="h-full w-full bg-white rounded-br-2xl flex flex-col py-2 px-6 rounded-2xl divide-y">
+    <div className="h-full w-full bg-white flex flex-col py-2 px-6 rounded-2xl divide-y">
 
-      <div className="justify-between items-center flex py-3">
+      <div className="justify-between items-center flex py-3 rounded-2xl">
+
         <div className="w-fit h-fit hover:bg-slate-100 rounded-lg p-1 cursor-pointer"
           onClick={
             () => {
@@ -30,7 +31,7 @@ export default function BottomMenu() {
         </div>
       </div>
 
-      <div className="h-5/6 w-full py-8"></div>
+      <div className="h-5/6 w-full py-8 rounded-2xl border-4 flex-grow"></div>
 
     </div>
   )
