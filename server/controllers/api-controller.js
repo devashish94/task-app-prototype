@@ -1,4 +1,5 @@
-const db = require('../models/todo-db')
+// const db = require('../models/todo-db')
+const db = require('../models/db')
 
 const time = 200
 
@@ -10,8 +11,10 @@ module.exports = {
   },
   allTasks: async function (req, res) {
     const list = req.params.list
-    const sql = 'select * from todo where task_list.id = task.list_id'
-    
+    const sql = `select * from task 
+      inner join task_list on task_list.list_id = task.list_id
+      where task_list.name = ?
+    `    
     setTimeout(async () => {
       const result = await db.query(sql, [list])
       res.json(result[0])
