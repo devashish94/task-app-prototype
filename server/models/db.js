@@ -1,169 +1,214 @@
 const mysql = require('mysql2')
 const { task_lists, tasks } = require('./db-data')
 
-let db = undefined
-
-try {
-  db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'a',
-  }).promise()
-} catch (err) {
-  console.log('create pool\n', err.message)
-}
-
 const db_name = 'todo_db'
 const task_list_table = 'task_list'
 const task_table = 'task'
 
-function drop_db() {
+function drop_db(db) {
   const drop_db = 'drop database if exists ??'
 
   try {
-    const result = db.query(drop_db, [db_name])
-  } catch (err) {
-    console.log('db init\n', err.message)
-  }
-}
-
-function db_init() {
-  const create_db = 'create database if not exists ??'
-
-  try {
-    const result = db.query(create_db, [db_name])
+    db.query(drop_db, [db_name])
   } catch (err) {
     console.log('db init\n', err)
   }
 }
 
-function get_db_list() {
-  const sql = 'show databases'
+function db_init(db) {
+  const create_db = 'create database if not exists ??'
 
   try {
-    const result = db.query(sql)
-    console.log(result)
+    db.query(create_db, [db_name])
   } catch (err) {
-    console.log('get_db_list\n', err)
+    console.log('db init\n', err)
   }
 }
 
-function use_todo_db() {
+function get_db_list(db) {
+  const sql = 'SELECT DATABASE() from dual'
+  db.query(sql, (err, result) => {
+    if (err) {
+      throw new err
+    }
+    console.log(result)
+  })
+}
+
+function current_db(db) {
+  const sql = 'show databases'
+
+  try {
+    db.query(sql, (err, result) => {
+      if (err) {
+        throw new err
+      }
+      console.log('current:', result)
+    })
+  } catch (err) {
+    console.log('current_db', err)
+  }
+}
+
+function use_todo_db(db) {
   const sql = 'use ??'
 
   try {
-    const result = db.query(sql, [db_name])
+    db.query(sql, [db_name])
     console.log('done using')
   } catch (err) {
     console.log('use_todo_db\n', err)
   }
 }
 
-function create_table_task_lists(listName) {
-  const sql = `create table if not exists ??.?? (
+function create_table_task_lists(db, listName) {
+  const sql = `create table ??.?? (
     list_id int PRIMARY KEY AUTO_INCREMENT,
-    name varchar(255) NOT NULL,
+    name varchar(255) NOT NULL UNIQUE,
     pin boolean NOT NULL
   )`
 
   try {
-    const result = db.query(sql, [db_name, task_list_table])
+    db.query(sql, [db_name, task_list_table])
   } catch (err) {
     console.log('create_table_task_lists\n', err)
   }
 }
 
-function create_table_tasks(listName) {
-  const sql = `create table if not exists ??.?? (
+function create_table_tasks(db, listName) {
+  const sql = `create table ??.?? (
     task_id int PRIMARY KEY AUTO_INCREMENT,
-    list_id int,
+    list_name varchar(255),
     title varchar(255) NOT NULL,
     description varchar(255),
     completed boolean NOT NULL,
-    FOREIGN KEY (list_id) REFERENCES ?? (list_id)
+    FOREIGN KEY (list_name) REFERENCES ?? (name)
   )`
 
   try {
-    const result = db.query(sql, [db_name, task_table, task_list_table])
+    db.query(sql, [db_name, task_table, task_list_table])
   } catch (err) {
     console.log('create_table_tasks', err)
   }
 }
 
-function show_tables() {
+function show_tables(db) {
   const sql = `show tables`
 
   try {
-    const result = db.query(sql)
-    console.log(result[0])
+    db.query(sql, (err, result) => {
+      if (err) {
+        throw err;
+      }
+      console.log(result)
+    })
   } catch (err) {
     console.log('show_tables', err)
   }
 }
 
-function fill_lists(list) {
+function fill_lists(db, list) {
   const sql = 'insert into ?? (name, pin) values (?, ?)'
 
   try {
-    const result = db.query(sql, [task_list_table, list.name, list.pin])
+    db.query(sql, [task_list_table, list.name, list.pin])
   } catch (err) {
     console.log('fill_task_lists', err)
   }
 }
 
-function insert_task_lists() {
+function insert_task_lists(db) {
   for (const list of task_lists) {
-    fill_lists(list)
+    fill_lists(db, list)
   }
 }
 
-function insert_tasks() {
+function insert_tasks(db) {
   for (const task of tasks) {
-    fill_tasks(task)
+    fill_tasks(db, task)
   }
 }
 
-function fill_tasks(task) {
-  const sql = 'insert into ?? (list_id, title, description, completed) values (?, ?, ?, ?)'
+function fill_tasks(db, task) {
+  const sql = 'insert into ?? (list_name, title, description, completed) values (?, ?, ?, ?)'
 
   try {
-    const result = db.query(sql, [task_table, task.list_id, task.title, task.description, task.completed])
+    db.query(sql, [task_table, task.list_name, task.title, task.description, task.completed])
   } catch (err) {
     console.log('fill_tasks', err)
   }
 }
 
-function get_task_lists() {
-  const sql = 'select * from ?? limit 3'
+function get_task_lists(db) {
+  const sql = 'select * from ??'
 
   try {
-    const result = db.query(sql, [task_list_table])
-    console.log('[LISTS]', result[0])
+    const result = db.query(sql, [task_list_table], (err, result) => {
+      if (err) {
+        throw err;
+      }
+      console.log('[LISTS]', result)
+    })
   } catch (err) {
     console.log('get_task_lists', err)
   }
 }
 
-function get_tasks() {
-  const sql = 'select * from ?? limit 3'
+function get_tasks(db) {
+  const sql = 'select * from ??'
 
   try {
-    const result = db.query(sql, [task_table])
-    console.log('[TASKS]', result[0])
+    const result = db.query(sql, [task_table], (err, result) => {
+      if (err) {
+        throw err;
+      }
+      console.log('[TASKS]', result)
+    })
   } catch (err) {
     console.log('get_tasks', err)
   }
 }
 
-drop_db()
-db_init()
-use_todo_db()
-create_table_task_lists()
-create_table_tasks()
-show_tables()
-insert_task_lists()
-insert_tasks()
-get_task_lists()
-get_tasks()
+function delete_table(db, name) {
+  const sql = 'drop table if exists ??'
+  db.query(sql, [name])
+}
+
+const config = {
+  host: 'localhost',
+  user: 'root',
+  password: 'a',
+}
+
+function check() {
+  try {
+    const db = mysql.createConnection(config)
+    drop_db(db)
+    db_init(db)
+  } catch (err) {
+    console.log('Database server is down\n', err.message)
+    return
+  }
+}
+
+check()
+
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'a',
+  database: db_name
+})
+
+current_db(db)
+delete_table(db, task_list_table)
+delete_table(db, task_table)
+create_table_task_lists(db)
+create_table_tasks(db)
+show_tables(db)
+insert_task_lists(db)
+insert_tasks(db)
+get_task_lists(db)
+get_tasks(db)
 
 module.exports = db
