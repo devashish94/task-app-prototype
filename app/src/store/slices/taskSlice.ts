@@ -18,34 +18,16 @@ const initialState = {
 }
 
 export const fetchAllList = createAsyncThunk('fetchAllList', async function () {
-
-  const url = `http://${'localhost'}:8000/api/list/today/`
-  // console.log(url)
-
-  // const url = 'https://jsonplaceholder.typicode.com/todos'
-  // const url = 'https://dummyjson.com/posts'
-  // const response = await fetch(url)
-  // const tasks = await response.json()
-  // console.log(tasks)
-  // return tasks.posts
-
+  const url = `http://localhost:8000/api/lists/all/`
   const tasks = await axios(url)
-  // const response = await fetch(url)
-  // const tasks = await response.json()
 
-  console.log(url, tasks)
   return tasks.data
 })
 
 export const fetchTaskList = createAsyncThunk('fetchTasksList', async function (list: string) {
   const url = `http://${window.location.host.replace(':5173', '')}:8000/api/list/${list}`
-  // console.log(url)
-
   const tasks = await axios(url) 
-  // const response = await fetch(url)
-  // const tasks = await response.json()
 
-  // console.log(url, tasks)
   return tasks.data
 })
 

@@ -1,6 +1,6 @@
-import MainContent from "../components/MainContent"
+import MainContent from "../components/MainContent/MainContent"
 import { useAppSelector, useAppDispatch } from '../store/hooks'
-import { toggleBottomMenu } from "../store/slices/addNewTaskSlice"
+import { toggleBottomMenu } from "../store/slices/bottomMenuSlice"
 import { toggleSidebar } from '../store/slices/navbarToggleSlice'
 
 export default function ({ title }: any) {
@@ -9,7 +9,11 @@ export default function ({ title }: any) {
   const bottomMenu = useAppSelector(state => state.bottomMenu.toggle)
 
   return (
-    <div className='h-full w-full flex-grow flex flex-col z-10 rounded-2xl relative' >
+    <div className={`h-full w-full flex-grow flex flex-col z-10 rounded-2xl relative ${
+      bottomMenu ? 
+      'opacity-60' : 
+      ''
+    }`} >
 
       {/* main content = desktop view */}
       <div className={`w-full flex-grow hidden large:flex 2xl:rounded-r-2xl overflow-hidden bg-white justify-center relative`} 

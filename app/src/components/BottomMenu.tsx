@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from "../store/hooks";
-import { toggleBottomMenu, toggleFullScreen as toggleFullscreen } from "../store/slices/addNewTaskSlice";
+import { toggleBottomMenu, toggleFullScreen as toggleFullscreen } from "../store/slices/bottomMenuSlice";
 import ExpandLogo from "../svg-components/ExpandLogo";
 import CloseLogo from '../svg-components/CloseLogo'
 import NonExapandLogo from "../svg-components/NonExpandLogo";

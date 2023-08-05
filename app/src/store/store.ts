@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import pinCollapseSlice from './slices/pinnedCollapseSlice'
 import sidebarToggleSlice from './slices/navbarToggleSlice';
 import tasksFromListSlice from './slices/taskSlice';
-import addBottomMenuSlice from './slices/addNewTaskSlice';
+import addBottomMenuSlice from './slices/bottomMenuSlice';
 
 export const store = configureStore({
     reducer: {

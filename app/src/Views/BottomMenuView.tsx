@@ -8,7 +8,7 @@ export default function BottomMenuView() {
   return (
     <div className={`z-50 large:z-50 fixed border-slate-300 w-full duration-300 bg-green-500 transition-all rounded-2xl transform-gpu ease-in-out
       ${bottomMenu ?
-        'bottom-0 drop-shadow-2xl split-display:drop-shadow-xl' :
+        'bottom-0 drop-shadow-3xl split-display:drop-shadow-xl' :
         '-bottom-full'
       } 
       ${fullscreen ?

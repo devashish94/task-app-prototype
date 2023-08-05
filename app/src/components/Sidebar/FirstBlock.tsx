@@ -4,7 +4,7 @@ import SomedayLogo from '../../svg-components/calendar/SomedayLogo'
 import { Link } from 'react-router-dom'
 import { toggleSidebar } from '../../store/slices/navbarToggleSlice';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { toggleBottomMenu } from '../../store/slices/addNewTaskSlice';
+import { toggleBottomMenu } from '../../store/slices/bottomMenuSlice';
 
 function FirstBlock() {
     const dispatch = useAppDispatch()
@@ -14,13 +14,13 @@ function FirstBlock() {
     const logoList = [ <TodayLogo />, <UpcomingLogo />, <SomedayLogo />]
 
     return (
-        <div className="flex flex-col pb-4" >
+        <div className="flex flex-col" >
             {
                 presetTaskList.map((list, i) => {
                     return (
                         <Link
                             key={i}
-                            to={`/${list}`}
+                            to={`list/${list}`}
                             onClick={
                                 () => {
                                     dispatch(toggleSidebar())
