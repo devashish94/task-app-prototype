@@ -143,7 +143,7 @@ function get_task_lists(db) {
   const sql = 'select * from ??'
 
   try {
-    const result = db.query(sql, [task_list_table], (err, result) => {
+     db.query(sql, [task_list_table], (err, result) => {
       if (err) {
         throw err;
       }
@@ -158,7 +158,7 @@ function get_tasks(db) {
   const sql = 'select * from ??'
 
   try {
-    const result = db.query(sql, [task_table], (err, result) => {
+     db.query(sql, [task_table], (err, result) => {
       if (err) {
         throw err;
       }
@@ -194,9 +194,7 @@ function check() {
 check()
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'a',
+  ...config,
   database: db_name
 })
 
