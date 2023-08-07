@@ -1,17 +1,14 @@
-// import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-// import { fetchTaskList, nullTheArray } from '../../store/slices/taskSlice'
 import { toggleSidebar } from "../../store/slices/navbarToggleSlice";
 import { toggleBottomMenu } from "../../store/slices/bottomMenuSlice";
 import CollapseLogo from "../../svg-components/CollapseLogo";
 import PlusLogo from "../../svg-components/PlusLogo";
-// import { useLocation } from "react-router-dom";
-import TaskContent from "./ItemView";
+import ItemView from "./ItemView";
 
 export default function MainContent(props: any) {
   const dispatch = useAppDispatch()
 
-  const { tasks, loading } = useAppSelector(state => state.tasks)
+  const loading = useAppSelector(state => state.tasks.loading)
   const sidebar = useAppSelector(state => state.toggleSidebar)
   const bottomMenu = useAppSelector(state => state.bottomMenu.toggle)
 
@@ -48,7 +45,7 @@ export default function MainContent(props: any) {
 
         <div className={`px-4 pt-5 mb-12  w-full h-full flex flex-col overflow-auto`} >
           <div className={`h-full flex flex-col overflow-auto  ${loading ? 'items-center justify-center' : ''}`}>
-            <TaskContent />
+            <ItemView />
           </div>
         </div>
 

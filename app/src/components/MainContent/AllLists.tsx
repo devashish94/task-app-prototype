@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { fetchAllList, fetchTaskList, nullTheArray } from '../../store/slices/taskSlice'
+import { fetchAllList } from '../../store/slices/listSlice'
 import ThreeDots from "../../svg-components/ThreeDots";
 import EditLogo from "../../svg-components/EditLogo";
 import Bin from "../../svg-components/Bin";
 import Relax from "../../svg-components/Relax";
 import Loader from '../../svg-components/Loader'
 
-export default function Tasks({path} : any) {
+export default function Tasks({ path }: any) {
   const dispatch = useAppDispatch()
 
-  const { tasks, loading } = useAppSelector(state => state.tasks)
+  const lists = useAppSelector(state => state.lists.lists)
+  const loading = useAppSelector(state => state.tasks.loading)
   const location = path.slice(1)
   console.log(location)
 
@@ -23,7 +24,7 @@ export default function Tasks({path} : any) {
   return (
     <>
       {
-        loading ? <Loader /> : tasks && tasks.length > 0 ? tasks.map((task: any, idx: number) => {
+        loading ? <Loader /> : lists && lists.length > 0 ? lists.map((task: any, idx: number) => {
           return (
             <div key={idx} className="text-black w-full split-display:px-10 cursor-pointer">
               <div className="px-2 py-4 split-display:px-4 flex justify-between hover:bg-slate-100 rounded-xl ">

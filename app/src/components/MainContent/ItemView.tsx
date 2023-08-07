@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Tasks from "./Tasks";
 import AllLists from '../MainContent/AllLists'
 
-export default function TaskContent() {
+export default function ItemView() {
   const location = useLocation().pathname
 
   return (

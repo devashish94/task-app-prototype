@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { fetchTaskList, nullTheArray } from '../../store/slices/taskSlice'
+import { fetchTaskList } from '../../store/slices/taskSlice'
 import ThreeDots from "../../svg-components/ThreeDots";
 import EditLogo from "../../svg-components/EditLogo";
 import Bin from "../../svg-components/Bin";
@@ -10,13 +10,11 @@ import Loader from '../../svg-components/Loader'
 export default function Tasks({ path }: any) {
   const dispatch = useAppDispatch()
   const location = path.slice(1).split('/')[1] 
-  console.log(location)
 
-  const { tasks, loading } = useAppSelector(state => state.tasks)
+  const tasks = useAppSelector(state => state.tasks.tasks)
+  const loading = useAppSelector(state => state.tasks.loading)
 
   useEffect(() => {
-    // dispatch(nullTheArray())
-    // console.clear()
     path.length === 1 ? dispatch(fetchTaskList('today')) : dispatch(fetchTaskList(location))
   }, [location])
 
