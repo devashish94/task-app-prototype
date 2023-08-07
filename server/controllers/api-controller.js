@@ -45,20 +45,20 @@ module.exports = {
       where task_list.name = ?
     `
 
-    // setTimeout(() => {
-    const params = [task.id, task.title, task.description, task.completed, listName]
+    setTimeout(() => {
+      const params = [task.id, task.title, task.description, task.completed, listName]
 
-    console.log(
-      db.query(sql, params, (err, result) => {
-        if (err) {
-          return res.json({
-            error: err.message
-          })
-        }
-        return res.json(result)
-      }).sql
-    )
-    // }, time);
+      console.log(
+        db.query(sql, params, (err, result) => {
+          if (err) {
+            return res.json({
+              error: err.message
+            })
+          }
+          return res.json(result)
+        }).sql
+      )
+    }, time);
 
   }
 }
