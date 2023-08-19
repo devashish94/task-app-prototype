@@ -2,7 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 type Task = {
-  task_list: string,
+  id: number,
+  list_name: string,
   title: string,
   description: string,
   completed: boolean

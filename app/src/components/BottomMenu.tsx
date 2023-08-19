@@ -7,8 +7,18 @@ import NonExapandLogo from "../svg-components/NonExpandLogo";
 export default function BottomMenu() {
   const dispatch = useAppDispatch()
 
+  type Task = {
+    id: number,
+    list_name: string,
+    title: string,
+    description: string,
+    completed: boolean
+  }
+
   const bottomMenu = useAppSelector(state => state.bottomMenu.toggle)
   const fullscreen = useAppSelector(state => state.bottomMenu.fullscreen)
+  const task: Task | null = useAppSelector(state => state.bottomMenu.task)
+  const taskLoading = useAppSelector(state => state.bottomMenu.loading)
 
   return (
     <div className="h-full w-full bg-white flex flex-col px-6 border border-slate-300 rounded-2xl divide-y">
@@ -25,14 +35,23 @@ export default function BottomMenu() {
           </button>
         </div>
 
-        <div className="cursor-pointer w-fit h-fit rounded-full flex items-center p-1 bg-slate-100 hover:bg-slate-200" onClick={() => dispatch(toggleBottomMenu())}>
+        <div className="cursor-pointer w-fit h-fit rounded-full flex items-center p-1 bg-slate-100 hover:bg-slate-200"
+          onClick={
+            () => {
+              dispatch(toggleBottomMenu())
+            }}
+        >
           <button className={`w-full h-full text-xl flex items-center`}>
             <CloseLogo />
           </button>
         </div>
       </div>
 
-      <div className="h-5/6 w-full py-8 flex-grow"></div>
+      <div className="h-5/6 w-full py-8 flex-grow">
+        {
+          taskLoading ? 'Task Loading...' : task ? `${task.list_name}` : 'Task details could not be loaded'
+        }
+      </div>
 
     </div>
   )

@@ -11,14 +11,13 @@ function PinnedCollapse() {
   const dispatch = useAppDispatch()
 
   const lists = useAppSelector(state => state.lists.lists)
-  const loading = useAppSelector(state => state.tasks.loading)
-  const count = 1;
+  const loading = useAppSelector(state => state.lists.loading)
 
   useEffect(() => {
     // console.clear()
     console.log('pinnedlists')
     dispatch(fetchAllList())
-  }, [count])
+  }, [])
 
   return (
     <div className={`flex flex-col mt-8 rounded-lg duration-200 ${visible ? 'bg-slate-200' : 'bg-slate-100'}`}>

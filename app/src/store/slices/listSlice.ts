@@ -21,6 +21,7 @@ const initialState: State = {
 
 export const fetchAllList = createAsyncThunk('fetchAllList', async function () {
   const url = `http://localhost:8000/api/lists/all/`
+  console.log(url)
   const lists = await axios(url)
 
   return lists.data

@@ -23,6 +23,7 @@ export default function LastBlock() {
   //     </a>
   //   </div>
   // );
+
   const dispatch = useAppDispatch()
   const bottomMenu = useAppSelector(state => state.bottomMenu.toggle)
 
@@ -36,7 +37,9 @@ export default function LastBlock() {
           return (
             <Link
               key={i}
-              to={`${list.replace(' ', '') === 'AllLists' ? '/lists/all' : ''}`}
+              // to={`${list.replace(' ', '') === 'AllLists' ? '/lists/all' : ''}`}
+              // to={`/lists/${list.split(' ')[0].toLowerCase()}`}
+              to={`/lists/All_List`}
               onClick={
                 () => {
                   dispatch(toggleSidebar())

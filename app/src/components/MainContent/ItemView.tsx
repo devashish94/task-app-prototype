@@ -9,8 +9,8 @@ export default function ItemView() {
   return (
     <>
       <Routes>
-        <Route path='/*' element={<Tasks path={location} />} />
-        <Route path='/all' element={<AllLists path={location} />} />
+        <Route path='/lists/All_List' element={<AllLists path={location} />} />
+        <Route path='/list/:type' element={<Tasks path={location} />} />
       </Routes>
     </>
   )

@@ -19,10 +19,11 @@ export default function ({ title }: any) {
       <div className={`w-full flex-grow hidden large:flex 2xl:rounded-r-2xl overflow-hidden bg-white justify-center relative`} 
         onClick={() => {
           if (bottomMenu) {
-            dispatch(toggleBottomMenu)
+            dispatch(toggleBottomMenu())
           }
         }} >
-        <MainContent title={title} view={'Desktop View'} />
+        {/* <MainContent title={title} view={'Desktop View'} /> */}
+        <MainContent />
       </div>
 
       {/* main content = tablet view */}
@@ -30,10 +31,11 @@ export default function ({ title }: any) {
         className={`will-change-transform w-full flex-grow hidden split-display:flex large:hidden duration-[200ms] ease-in-out transition-all transform-gpu ${sidebar ? 'rounded-l-xl ' : 'bg-white'} justify-center relative overflow-hidden`}  
         onClick={() => {
           if (bottomMenu) {
-            dispatch(toggleBottomMenu)
+            dispatch(toggleBottomMenu())
           }
         }} >
-        <MainContent title={title} view={'Tablet View'} />
+        {/* <MainContent title={title} view={'Tablet View'} /> */}
+        <MainContent />
       </div>
 
       {/* main content = mobile view */}
@@ -44,10 +46,11 @@ export default function ({ title }: any) {
             dispatch(toggleSidebar())
           }
           if (bottomMenu) {
-            dispatch(toggleBottomMenu)
+            dispatch(toggleBottomMenu())
           }
         }} >
-        <MainContent title={title} view={'Mobile View'} />
+        {/* <MainContent title={title} view={'Mobile View'} /> */}
+        <MainContent />
       </div>
 
     </div>

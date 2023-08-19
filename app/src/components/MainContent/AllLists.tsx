@@ -17,7 +17,7 @@ export default function Tasks({ path }: any) {
 
   useEffect(() => {
     // dispatch(nullTheArray())
-    console.clear()
+    // console.clear()
     dispatch(fetchAllList())
   }, [path])
 
