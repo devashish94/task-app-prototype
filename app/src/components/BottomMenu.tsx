@@ -3,6 +3,7 @@ import { toggleBottomMenu, toggleFullScreen as toggleFullscreen } from "../store
 import ExpandLogo from "../svg-components/ExpandLogo";
 import CloseLogo from '../svg-components/CloseLogo'
 import NonExapandLogo from "../svg-components/NonExpandLogo";
+import TaskDetail from "./MainContent/TaskDetail";
 
 export default function BottomMenu() {
   const dispatch = useAppDispatch()
@@ -49,7 +50,8 @@ export default function BottomMenu() {
 
       <div className="h-5/6 w-full py-8 flex-grow">
         {
-          taskLoading ? 'Task Loading...' : task ? `${task.list_name}` : 'Task details could not be loaded'
+          // taskLoading ? 'Task Loading...' : task ? `${task.list_name}` : 'Task details could not be loaded'
+          taskLoading ? 'Task Loading...' : task ? <TaskDetail data={task} /> : 'Task details could not be loaded'
         }
       </div>
 

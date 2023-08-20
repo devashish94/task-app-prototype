@@ -26,12 +26,12 @@ const initialState: State = {
 }
 
 // export const fetchTaskDetail = createAsyncThunk('fetchTaskDetail', async (list, id) => {
-export const fetchTaskDetail = createAsyncThunk('fetchTaskDetail', async () => {
-  // const url = `http://localhost:8000/api/list/${list}/${id}`
-  const url = `http://localhost:8000/api/list/today/3`
+export const fetchTaskDetail = createAsyncThunk('fetchTaskDetail', async (params: any) => {
+  const url = `http://localhost:8000/api/list/${params.path}/${params.id}`
+  // const url = `http://localhost:8000/api/list/today/3`
   const tasks = await axios(url)
 
-  console.log(tasks.data[0])
+  console.log("CALL MADE TO:", url, '\nDATA FROM THE SERVER:', tasks.data)
 
   return tasks.data[0]
 })

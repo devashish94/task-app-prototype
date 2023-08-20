@@ -19,15 +19,24 @@ export default function Tasks({ path }: any) {
     path.length === 1 ? dispatch(fetchTaskList('today')) : dispatch(fetchTaskList(location))
   }, [location])
 
+  function parameters(id: any, location: string) {
+    const params = {
+      id,
+      path: location
+    }
+    return params
+  }
+
   return (
     <>
       {
         loading ? <Loader /> : tasks && tasks.length > 0 ? tasks.map((task: any, idx: number) => {
           return (
             // <div key={idx} className="text-black w-full split-display:px-10 cursor-pointer">
-            <div key={task.id} className="text-black w-full split-display:px-10 cursor-pointer" onClick={
+            <div key={task.task_id} className="text-black w-full split-display:px-10 cursor-pointer" onClick={
               () => {
-                dispatch(fetchTaskDetail())
+                console.log("THIS IS THE ID:", task.description)
+                dispatch(fetchTaskDetail(parameters(task.task_id, location)))
                 dispatch(toggleBottomMenu())
               }}>
               <div className="px-2 py-4 split-display:px-4 flex justify-between hover:bg-slate-100 rounded-xl ">
